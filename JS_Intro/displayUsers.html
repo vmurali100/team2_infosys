@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        form{
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <h2>Welcome to Display users page !!!</h2>
+    <button onclick="gotBackToMainPage()">Go Back to Main Page !!</button>
+    <br /><br /><br />
+    <table border="1">
+      <thead>
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Gender</td>
+          <td>Edit User</td>
+          <td>Delete User</td>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+
+    <br><br><br>
+    <form>
+        <label for="fname">First Name : </label>
+        <input type="text" id="fname" class="userFname" /> <br />
+  
+        <label for="fname">Last Name : </label>
+        <input type="text" id="lname" class="userLname" /> <br />
+  
+        <label for="fname">Eamil : </label>
+        <input type="email" id="email" class="userEmail" /> <br />
+  
+        <label for="gender">Gender : </label>
+        <input type="radio" name="gender" value="Male" /> Male
+        <input type="radio" name="gender" value="Female" /> Female
+        <input type="radio" name="gender" value="Other" /> Other
+        <br />
+  
+        <button type="button" onclick="updateUser()">Update User</button>
+      </form>
+    <script>
+      var users = JSON.parse(localStorage.getItem("users"));
+        if(users == null){
+            users=[]
+        }
+      function displayUsersDetails(users){
+        document.querySelector("tbody").innerHTML = ""
+        users.forEach((user, i) => {
+        // console.log(i)
+        var myTr = document.createElement("tr");
+
+        for(a in user){
+            var myTd = document.createElement("td")
+            myTd.innerHTML = user[a]
+            myTr.appendChild(myTd)
+        }
+
+        var editTd = document.createElement("td");
+        var editBtn = document.createElement("button")
+        editBtn.setAttribute("onclick","editUser("+i+")")
+        editBtn.innerHTML = "Edit "
+        editTd.appendChild(editBtn)
+
+
+        var deleteTd = document.createElement("td")
+        var deletebtn = document.createElement("button")
+        deletebtn.setAttribute("onclick","deleteUser("+i+")")
+        deletebtn.innerHTML = "Delete ";
+        deleteTd.appendChild(deletebtn)
+
+        myTr.appendChild(editTd)
+        myTr.appendChild(deleteTd)
+        document.querySelector("tbody").appendChild(myTr)
+      });
+      
+      }
+
+      displayUsersDetails(users)
+      function gotBackToMainPage() {
+        window.location.href = "sample1.html";
+      }
+      var allGenderElements = document.getElementsByName("gender");
+      var index 
+      function editUser(i){
+        document.querySelector("form").style.display="block"
+        index =i;
+        for(a in users[i]){
+            if(a !== "userGender"){
+                document.getElementsByClassName(a)[0].value = users[i][a]
+            }else{
+                allGenderElements.forEach((element)=>{
+                    if(element.value == users[i][a]){
+                        element.checked = true
+                    }
+                })
+            }
+        }
+
+      }
+
+      function deleteUser(i){
+        users = users.filter((usr)=>{
+            return usr.userFname !== users[i].userFname
+        })
+
+        displayUsersDetails(users)
+      }
+
+      function updateUser(){
+        var user = {
+          userFname: "",
+          userLname: "",
+          userEmail: "",
+          userGender: "",
+        };
+
+        for (a in user) {
+          if (a !== "userGender") {
+            user[a] = document.getElementsByClassName(a)[0].value;
+          } else {
+            allGenderElements.forEach((element) => {
+              if (element.checked) {
+                user[a] = element.value;
+              }
+            });
+          }
+        }
+
+        users[index]=user;
+        displayUsersDetails(users)
+        localStorage.setItem("users",JSON.stringify(users))
+        document.querySelector("form").style.display = "none"
+      }
+    </script>
+  </body>
+</html>
