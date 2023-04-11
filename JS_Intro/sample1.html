@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="fname">First Name : </label>
+      <input type="text" id="fname" class="userFname" /> <br />
+
+      <label for="fname">Last Name : </label>
+      <input type="text" id="lname" class="userLname" /> <br />
+
+      <label for="fname">Eamil : </label>
+      <input type="email" id="email" class="userEmail" /> <br />
+
+      <label for="gender">Gender : </label>
+      <input type="radio" name="gender" value="Male" /> Male
+      <input type="radio" name="gender" value="Female" /> Female
+      <input type="radio" name="gender" value="Other" /> Other
+      <br />
+
+      <button type="button" onclick="addUser()">Add User</button>
+    </form>
+
+    <script>
+      var users = JSON.parse(localStorage.getItem('users'))
+      if(users == null){
+        users=[]
+      }
+      function addUser() {
+        var user = {
+          userFname: "",
+          userLname: "",
+          userEmail: "",
+          userGender: "",
+        };
+
+        // GetElemetsById - it will give Single Element
+        // GetElementsByClassName - It will give array of Elements
+        // GetElementsByName - It will give array of Elements
+        // GetElementsByTagName - It will give array of Elements
+        // querySelector -  it will give Single Element
+        // querySelectorAll - It will give array of Elements
+
+        var allGenderElements = document.getElementsByName("gender");
+        for (a in user) {
+          if (a !== "userGender") {
+            user[a] = document.getElementsByClassName(a)[0].value;
+          } else {
+            allGenderElements.forEach((element) => {
+              if (element.checked) {
+                user[a] = element.value;
+              }
+            });
+          }
+        }
+
+        users.push(user); // Added to An Array 
+        localStorage.setItem('users',JSON.stringify(users)) // Converted an array in to String format and Stored in local Storage !!
+        window.location.href = "displayUsers.html"
+        console.log(user);
+        // var user = {
+        //   fname: "",
+        //   lname: "",
+        //   email: "",
+        // };
+        // for (a in user) {
+        //   user[a] = document.getElementById(a).value;
+        // }
+        // console.log(user);
+      }
+      // function addUser() {
+      //   var fname = document.getElementById("fname").value;
+      //   var lname = document.getElementById("lname").value;
+      //   var email = document.getElementById("email").value;
+
+      //   // var user = {
+      //   //   fname: fname,
+      //   //   lname: lname,
+      //   //   email: email,
+      //   // };
+      //   var user = {
+      //     fname,
+      //     lname,
+      //     email,
+      //   };
+
+      //   console.log(user);
+      // }
+    </script>
+  </body>
+</html>
