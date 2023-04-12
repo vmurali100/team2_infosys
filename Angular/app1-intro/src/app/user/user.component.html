@@ -1,0 +1,18 @@
+<p>user works!</p>
+
+<h2>Message Received from Parent is : {{ message }}</h2>
+
+<h3>Person Details from Parent Component !!</h3>
+
+<ul>
+  <li>{{ childPerson.fname }}</li>
+  <li>{{ childPerson.lname }}</li>
+  <li>{{ childPerson.email }}</li>
+</ul>
+
+<h3>Values from Array !!</h3>
+<ul>
+  <li *ngFor="let user of allUsers">{{ user }}</li>
+</ul>
+
+<button (click)="sayhello(message)">Click Me</button>
