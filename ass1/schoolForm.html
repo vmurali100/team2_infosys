@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Form</title>
+    <style>
+        .dor-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+
+        .dor,
+        .dob {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dor span,
+        .dob span {
+            display: flex;
+            gap: 0.2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .date-input-box {
+            width: 30px;
+            height: 30px;
+            padding: 2px;
+            border: 1px solid black;
+        }
+
+        .form-field {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            margin: 1rem 0;
+        }
+
+        .form-field input {
+            padding: 2px;
+            border: 1px solid black;
+        }
+
+        .submit {
+            display: flex;
+            justify-content: center;
+        }
+
+        .submit button {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: 0;
+            border-radius: 1rem;
+            background: black;
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <form> -->
+    <section class="heading">
+        <h1>Registration Form</h1>
+        <div class="dor-section">
+            <span>
+                Date of Registration
+            </span>
+            <div class="dor">
+                <span>
+                    <input type="text" name="day" id="dayField1" class="date-input-box">
+                    <input type="text" name="day" id="dayField2" class="date-input-box">
+                </span>
+                /
+                <span>
+                    <input type="text" name="day" id="monthField1" class="date-input-box">
+                    <input type="text" name="day" id="monthField2" class="date-input-box">
+                </span>
+                /
+                <span>
+                    <input type="text" name="day" id="yearField1" class="date-input-box">
+                    <input type="text" name="day" id="yearField2" class="date-input-box">
+                </span>
+            </div>
+        </div>
+    </section>
+    <section class="form-section">
+        <h2>Personal Information</h2>
+        <div class="form-field">
+            <div>Full Name :</div>
+            <div><input type="text" name="fname" id="fname" /></div>
+        </div>
+        <div class="form-field">
+            <div>Nick Name :</div>
+            <div><input type="text" name="nickname" id="nickname" /></div>
+        </div>
+        <div class="form-field">
+            <div>Date of birth :</div>
+            <div class="dob">
+                <span>
+                    <input type="text" name="day" id="dayField1" class="date-input-box">
+                    <input type="text" name="day" id="dayField2" class="date-input-box">
+                </span>
+                /
+                <span>
+                    <input type="text" name="day" id="monthField1" class="date-input-box">
+                    <input type="text" name="day" id="monthField2" class="date-input-box">
+                </span>
+                /
+                <span>
+                    <input type="text" name="day" id="yearField1" class="date-input-box">
+                    <input type="text" name="day" id="yearField2" class="date-input-box">
+                </span>
+            </div>
+        </div>
+        <div class="form-field">
+            <div>Gender :</div>
+            <div class="gender-select">
+                <input type="radio" name="gender" id="male" value="M" />Male
+                <input type="radio" name="gender" id="male" value="F" />Female
+            </div>
+        </div>
+        <div class="submit">
+            <button type="button" onclick="submitForm()">Submit</button>
+        </div>
+    </section>
+    <!-- </form> -->
+    <script>
+        function submitForm() {
+            let fname = document.getElementById("fname")
+            let nickname = document.getElementById("nickname")
+            let gender = document.getElementsByName("gender")
+            let dorDay1 = document.querySelector("dor.dayField1")
+            let dorDay2 = document.querySelector("dor.dayField2")
+            console.log(fname, nickname, gender, dorDay1, dorDay2);
+            // dorday not coming
+        }
+    </script>
+</body>
+
+</html>
