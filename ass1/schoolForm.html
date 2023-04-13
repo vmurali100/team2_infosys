@@ -151,20 +151,70 @@
                     <td>Dob</td>
                     <td>Gender</td>
                     <td>Field of Interest</td>
-                    <td>Dor</td>
                     <td colspan="2">
                         Actions
                     </td>
                 </tr>
             </thead>
             <tbody>
-
+                <!-- Content will be added here -->
             </tbody>
         </table>
     </section>
+    <section class="edit-form">
+        <h2>Personal Information</h2>
+        <div class="form-field">
+            <div>Full Name :</div>
+            <div><input type="text" name="fname" id="fname" /></div>
+        </div>
+        <div class="form-field">
+            <div>Nick Name :</div>
+            <div><input type="text" name="nickname" id="nickname" /></div>
+        </div>
+        <div class="form-field">
+            <div>Date of birth :</div>
+            <div class="dob">
+                <span>
+                    <input type="number" min="0" max="9" name="day" id="dayField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="dayField2" class="date-input-box">
+                </span>
+                /
+                <span>
+                    <input type="number" min="0" max="9" name="day" id="monthField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="monthField2" class="date-input-box">
+                </span>
+                /
+                <span>
+                    <input type="number" min="0" max="9" name="day" id="yearField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="yearField2" class="date-input-box">
+                </span>
+            </div>
+        </div>
+        <div class="form-field">
+            <div>Gender :</div>
+            <div class="gender-select">
+                <input type="radio" name="gender" id="male" value="M" />Male
+                <input type="radio" name="gender" id="female" value="F" />Female
+            </div>
+        </div>
+        <div class="form-field">
+            <div>Area of Interest :</div>
+            <div class="field-select">
+                <select name="field" id="field">
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="arts">Arts</option>
+                </select>
+            </div>
+        </div>
+        <div class="submit">
+            <button type="button" onclick="editForm()">Save</button>
+        </div>
+    </section>
     <!-- </form> -->
     <script>
-        const ListOfForms = []
+        let ListOfForms = []
+        let selected = 0;
         function submitForm() {
             let fname = document.getElementById("fname").value
             let nickname = document.getElementById("nickname").value
@@ -198,8 +248,39 @@
                 "birth_date": `${dobDay1}${dobDay2}/${dobMonth1}${dobMonth2}/${dobYear1}${dobYear2}`,
                 "gender": gender,
                 "field": `${field}`,
-                "registration_date": `${dorDay1}${dorDay2}/${dorMonth1}${dorMonth2}/${dorYear1}${dorYear2}`
             });
+            appendIntoView();
+        }
+        function editForm() {
+            let fname = document.querySelector(".edit-form #fname").value
+            let nickname = document.querySelector(".edit-form #nickname").value
+            let gender = ""
+            let genderM = document.querySelector(".edit-form #male")
+            let genderF = document.querySelector(".edit-form #female")
+            if (genderM.checked) {
+                gender = genderM.value
+            } else if (genderF.checked) {
+                gender = genderF.value
+            }
+            else {
+                gender = ""
+            }
+            let field = document.querySelector(".edit-form #field").value
+            let dobDay1 = document.querySelector(".edit-form .dob #dayField1").value
+            let dobDay2 = document.querySelector(".edit-form .dob #dayField2").value
+            let dobMonth1 = document.querySelector(".edit-form .dob #monthField1").value
+            let dobMonth2 = document.querySelector(".edit-form .dob #monthField2").value
+            let dobYear1 = document.querySelector(".edit-form .dob #yearField1").value
+            let dobYear2 = document.querySelector(".edit-form .dob #yearField2").value
+            // console.log(fname, nickname, gender, dorDay1, dorDay2);
+            // dorday not coming
+            ListOfForms[selected] = {
+                "fname": fname,
+                "nickname": nickname,
+                "birth_date": `${dobDay1}${dobDay2}/${dobMonth1}${dobMonth2}/${dobYear1}${dobYear2}`,
+                "gender": gender,
+                "field": `${field}`
+            };
             appendIntoView();
         }
         function appendIntoView() {
@@ -231,6 +312,38 @@
                 myTr.appendChild(deleteTd)
                 document.querySelector("tbody").appendChild(myTr)
             })
+        }
+        function editUser(index) {
+            selected = index;
+            document.querySelector(".edit-form #fname").value = ListOfForms[index]["fname"]
+            let nickname = document.querySelector(".edit-form #nickname").value = ListOfForms[index]["nickname"]
+            let genderM = document.querySelector(".edit-form #male")
+            let genderF = document.querySelector(".edit-form #female")
+            let genderVal = ListOfForms[index]["gender"]
+            if (genderVal === "M") {
+                genderM.checked = true
+            }
+            else if (genderVal === "F") {
+                genderF.checked = true
+            } else {
+                genderM.checked = false
+                genderF.checked = false
+            }
+            document.querySelector(".edit-form #field").value = ListOfForms[index]["field"];
+            let [dayVal, monthVal, yearVal] = ListOfForms[index]["birth_date"].split("/")
+            // let [day2Val, month2Val, year2Val] = ListOfForms[index]["registration_date"].split("/")
+            // for dob
+            document.querySelector(".edit-form .dob #dayField1").value = String(dayVal).slice(0, 1);
+            document.querySelector(".edit-form .dob #dayField2").value = String(dayVal).slice(1, 2);
+            document.querySelector(".edit-form .dob #monthField1").value = String(monthVal).slice(0, 1);
+            document.querySelector(".edit-form .dob #monthField2").value = String(monthVal).slice(1, 2);
+            document.querySelector(".edit-form .dob #yearField1").value = String(yearVal).slice(0, 1);
+            document.querySelector(".edit-form .dob #yearField2").value = String(yearVal).slice(1, 2);
+        }
+        function deleteUser(index) {
+            let afterDelete = ListOfForms.filter((item, i) => i !== index);
+            ListOfForms = afterDelete;
+            appendIntoView();
         }
     </script>
 </body>
