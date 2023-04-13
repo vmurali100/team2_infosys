@@ -76,18 +76,18 @@
             </span>
             <div class="dor">
                 <span>
-                    <input type="text" name="day" id="dayField1" class="date-input-box">
-                    <input type="text" name="day" id="dayField2" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="dayField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="dayField2" class="date-input-box">
                 </span>
                 /
                 <span>
-                    <input type="text" name="day" id="monthField1" class="date-input-box">
-                    <input type="text" name="day" id="monthField2" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="monthField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="monthField2" class="date-input-box">
                 </span>
                 /
                 <span>
-                    <input type="text" name="day" id="yearField1" class="date-input-box">
-                    <input type="text" name="day" id="yearField2" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="yearField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="yearField2" class="date-input-box">
                 </span>
             </div>
         </div>
@@ -106,18 +106,18 @@
             <div>Date of birth :</div>
             <div class="dob">
                 <span>
-                    <input type="text" name="day" id="dayField1" class="date-input-box">
-                    <input type="text" name="day" id="dayField2" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="dayField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="dayField2" class="date-input-box">
                 </span>
                 /
                 <span>
-                    <input type="text" name="day" id="monthField1" class="date-input-box">
-                    <input type="text" name="day" id="monthField2" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="monthField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="monthField2" class="date-input-box">
                 </span>
                 /
                 <span>
-                    <input type="text" name="day" id="yearField1" class="date-input-box">
-                    <input type="text" name="day" id="yearField2" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="yearField1" class="date-input-box">
+                    <input type="number" min="0" max="9" name="day" id="yearField2" class="date-input-box">
                 </span>
             </div>
         </div>
@@ -125,23 +125,112 @@
             <div>Gender :</div>
             <div class="gender-select">
                 <input type="radio" name="gender" id="male" value="M" />Male
-                <input type="radio" name="gender" id="male" value="F" />Female
+                <input type="radio" name="gender" id="female" value="F" />Female
+            </div>
+        </div>
+        <div class="form-field">
+            <div>Area of Interest :</div>
+            <div class="field-select">
+                <select name="field" id="field">
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="arts">Arts</option>
+                </select>
             </div>
         </div>
         <div class="submit">
             <button type="button" onclick="submitForm()">Submit</button>
         </div>
     </section>
+    <section class="view-list">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>NickName</td>
+                    <td>Dob</td>
+                    <td>Gender</td>
+                    <td>Field of Interest</td>
+                    <td>Dor</td>
+                    <td colspan="2">
+                        Actions
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </section>
     <!-- </form> -->
     <script>
+        const ListOfForms = []
         function submitForm() {
-            let fname = document.getElementById("fname")
-            let nickname = document.getElementById("nickname")
+            let fname = document.getElementById("fname").value
+            let nickname = document.getElementById("nickname").value
             let gender = document.getElementsByName("gender")
-            let dorDay1 = document.querySelector("dor.dayField1")
-            let dorDay2 = document.querySelector("dor.dayField2")
-            console.log(fname, nickname, gender, dorDay1, dorDay2);
+            if (gender[0].checked) {
+                gender = gender[0].value
+            } else if (gender[1].checked) {
+                gender = gender[1].value
+            }
+            else {
+                gender = ""
+            }
+            let field = document.getElementsByName("field")[0].value
+            let dorDay1 = document.querySelector(".dor #dayField1").value
+            let dorDay2 = document.querySelector(".dor #dayField2").value
+            let dorMonth1 = document.querySelector(".dor #monthField1").value
+            let dorMonth2 = document.querySelector(".dor #monthField2").value
+            let dorYear1 = document.querySelector(".dor #yearField1").value
+            let dorYear2 = document.querySelector(".dor #yearField2").value
+            let dobDay1 = document.querySelector(".dob #dayField1").value
+            let dobDay2 = document.querySelector(".dob #dayField2").value
+            let dobMonth1 = document.querySelector(".dob #monthField1").value
+            let dobMonth2 = document.querySelector(".dob #monthField2").value
+            let dobYear1 = document.querySelector(".dob #yearField1").value
+            let dobYear2 = document.querySelector(".dob #yearField2").value
+            // console.log(fname, nickname, gender, dorDay1, dorDay2);
             // dorday not coming
+            ListOfForms.push({
+                "fname": fname,
+                "nickname": nickname,
+                "birth_date": `${dobDay1}${dobDay2}/${dobMonth1}${dobMonth2}/${dobYear1}${dobYear2}`,
+                "gender": gender,
+                "field": `${field}`,
+                "registration_date": `${dorDay1}${dorDay2}/${dorMonth1}${dorMonth2}/${dorYear1}${dorYear2}`
+            });
+            appendIntoView();
+        }
+        function appendIntoView() {
+            document.getElementsByTagName("tbody")[0].innerHTML = ""
+            ListOfForms.forEach((item, i) => {
+                var myTr = document.createElement("tr");
+
+                for (a in item) {
+                    console.log(a);
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = item[a]
+                    myTr.appendChild(myTd)
+                }
+
+                var editTd = document.createElement("td");
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editUser(" + i + ")")
+                editBtn.innerHTML = "Edit "
+                editTd.appendChild(editBtn)
+
+
+                var deleteTd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                deletebtn.setAttribute("onclick", "deleteUser(" + i + ")")
+                deletebtn.innerHTML = "Delete ";
+                deleteTd.appendChild(deletebtn)
+
+                myTr.appendChild(editTd)
+                myTr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(myTr)
+            })
         }
     </script>
 </body>
