@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonService {
-  receiveAndSendData = new BehaviorSubject('')
-  constructor() { }
+  receiveAndSendData = new BehaviorSubject<string>('');
 
-  getDataFromCmp(message:string){
-    this.receiveAndSendData.next(message)
+  constructor() {}
+
+  getDataFromCmp(message:string) {
+    this.receiveAndSendData.next(message);
   }
 }

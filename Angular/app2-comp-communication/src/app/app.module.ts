@@ -6,6 +6,8 @@ import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { Comp1Component } from './comp1/comp1.component';
 import { Comp2Component } from './comp2/comp2.component';
+import { NewparentComponent } from './newparent/newparent.component';
+import { NewchildComponent } from './newchild/newchild.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { Comp2Component } from './comp2/comp2.component';
     ParentComponent,
     ChildComponent,
     Comp1Component,
-    Comp2Component
+    Comp2Component,
+    NewparentComponent,
+    NewchildComponent
   ],
   imports: [
     BrowserModule

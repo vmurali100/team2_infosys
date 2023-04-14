@@ -7,9 +7,11 @@ import { CommonService } from '../common.service';
   styleUrls: ['./comp2.component.css']
 })
 export class Comp2Component {
+  messageFromComp1 = "";
   constructor(private cs:CommonService){
-    this.cs.receiveAndSendData.subscribe((response)=>{
+    this.cs.receiveAndSendData.subscribe((response:any)=>{
       console.log(response)
+      this.messageFromComp1 = response;
     })
   }
 

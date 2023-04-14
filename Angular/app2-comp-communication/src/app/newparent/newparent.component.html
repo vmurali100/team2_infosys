@@ -1,0 +1,9 @@
+<p>newparent works!</p>
+
+<br /><br />
+<hr />
+<!-- [] is called Property Binding -->
+<app-newchild
+  [receiveMessage]="greetings" 
+  (sendMessage)="getMessageFromChild($event)"
+></app-newchild>
