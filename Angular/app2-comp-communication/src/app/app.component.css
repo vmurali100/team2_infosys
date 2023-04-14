@@ -1,0 +1,10 @@
+div{
+    width: 50%;
+    float: left;
+}
+#left{
+    background: lightblue;
+}
+#right{
+    background: lightgreen;
+}

@@ -2,4 +2,4 @@
 
 <hr>
 
-<app-child (sendMessage) = "recevieDataFromChild($event)"></app-child>
+<app-child (sendMessage) = "recevieDataFromChild($event)" (sendPerson)="recivePerson($event)"></app-child>
