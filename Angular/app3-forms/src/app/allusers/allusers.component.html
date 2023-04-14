@@ -16,7 +16,7 @@
             <td>{{usr.lastName}}</td>
             <td>{{usr.email}}</td>
             <td>
-                <button>Edit User</button>
+                <button (click)="handleEdit(usr)">Edit User</button>
             </td>
             <td>
                 <button (click)="handleDelete(usr)">Delete User</button>
