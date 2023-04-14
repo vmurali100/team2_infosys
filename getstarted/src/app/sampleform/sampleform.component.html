@@ -1,0 +1,10 @@
+<h1>Sample Form</h1>
+
+<form #registerForm="ngForm" class="form-section">
+    <input type="text" placeholder="First name" autocomplete="name" name="fname" id="" [(ngModel)]="user.fname">
+    <input type="text" placeholder="Last name" autocomplete="family-name" name="lname" id="" [(ngModel)]="user.lname">
+    <input type="email" placeholder="Email" autocomplete="email" name="email" id="" [(ngModel)]="user.email">
+    <input type="password" placeholder="Password" name="password" id="" [(ngModel)]="user.password">
+    <input type="password" placeholder="Confirm password" name="cpassword" id="" [(ngModel)]="user.cpassword">
+    <button type="submit" (click)="addUser()">Add User</button>
+</form>
