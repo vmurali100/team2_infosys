@@ -12,7 +12,7 @@ export interface User {
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
-  users: User[] = JSON.parse(localStorage.getItem('users') || '{}');
+  users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
 
   myUser: User = {
     firstName: '',
@@ -23,7 +23,6 @@ export class UserComponent {
   isEdit: boolean = false;
   ngOnInit() {
     localStorage.setItem('users', JSON.stringify([]));
-    
   }
   addUser() {
     this.users.push(this.myUser);
@@ -50,7 +49,7 @@ export class UserComponent {
   updateUser() {
     this.users.forEach((usr, i) => {
       if (usr.email === this.myUser.email) {
-        this.users[i] = {...this.myUser};
+        this.users[i] = { ...this.myUser };
       }
     });
     localStorage.setItem('users', JSON.stringify(this.users));

@@ -1,10 +1,81 @@
-<h1>Sample Form</h1>
+<h1>Register Form</h1>
 
 <form #registerForm="ngForm" class="form-section">
-    <input type="text" placeholder="First name" autocomplete="name" name="fname" id="" [(ngModel)]="user.fname">
-    <input type="text" placeholder="Last name" autocomplete="family-name" name="lname" id="" [(ngModel)]="user.lname">
-    <input type="email" placeholder="Email" autocomplete="email" name="email" id="" [(ngModel)]="user.email">
-    <input type="password" placeholder="Password" name="password" id="" [(ngModel)]="user.password">
-    <input type="password" placeholder="Confirm password" name="cpassword" id="" [(ngModel)]="user.cpassword">
-    <button type="submit" (click)="addUser()">Add User</button>
+    <div class="fname">
+        <label for="fname">First Name</label>
+        <input type="text" placeholder="First name" autocomplete="name" name="fname" id="fname" [(ngModel)]="user.fname"
+            required minlength="6">
+        <div class="err" *ngIf="
+                  registerForm.controls['fname']?.invalid &&
+                  (registerForm.controls['fname']?.touched ||
+                    registerForm.controls['fname']?.dirty)
+                ">
+            First Name has to be At least 6 Characters
+        </div>
+    </div>
+    <div class="lname">
+        <label for="lname">Last Name</label>
+        <input type="text" placeholder="Last name" autocomplete="family-name" name="lname" id="lname"
+            [(ngModel)]="user.lname" required minlength="6">
+        <div class="err" *ngIf="registerForm.controls['lname']?.invalid &&
+                    (registerForm.controls['lname']?.touched ||
+                    registerForm.controls['lname']?.dirty)">
+            Last Name has to be At least 6 Characters
+        </div>
+    </div>
+    <div class="email">
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email" autocomplete="email" name="email" id="email" [(ngModel)]="user.email"
+            required email>
+        <div class="err" *ngIf="registerForm.controls['email']?.invalid &&
+                                (registerForm.controls['email']?.touched ||
+                                registerForm.controls['email']?.dirty)">
+            Email is invalid
+        </div>
+    </div>
+    <div class="password">
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" name="password" id="password" [(ngModel)]="password" required
+            minlength="6">
+        <div class="err" *ngIf="registerForm.controls['password']?.invalid &&
+                                            (registerForm.controls['password']?.touched ||
+                                            registerForm.controls['password']?.dirty)">
+            Password has to be At least 6 Characters
+        </div>
+        <div class="err" *ngIf="registerForm.controls['password']?.valid &&
+                                        password!==cpassword">
+            Password must match
+        </div>
+    </div>
+    <div class="cpassword">
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" placeholder="Confirm password" name="cpassword" id="cpassword" [(ngModel)]="cpassword"
+            required minlength="6">
+        <div class="err" *ngIf="registerForm.controls['cpassword']?.invalid &&
+                                                    (registerForm.controls['cpassword']?.touched ||
+                                                    registerForm.controls['cpassword']?.dirty)">
+            Password has to be At least 6 Characters
+        </div>
+        <div class="err" *ngIf="registerForm.controls['cpassword']?.valid &&
+                                                password!==cpassword">
+            Password must match
+        </div>
+    </div>
+    <button type="button" *ngIf="!isEdit" (click)="addUser()" [disabled]="!registerForm.valid">
+        Add User
+    </button>
+    <button type="button" *ngIf="isEdit" (click)="updateUser()" [disabled]="!registerForm.valid">
+        Edit User
+    </button>
 </form>
+<!-- <pre>
+    form Touched : {{ registerForm.touched }}
+    Form Dirty :{{ registerForm.dirty }}
+    Form Pristine : {{ registerForm.pristine }}
+    Is the Form is Valid ? :   {{ registerForm.valid }}
+    Is form Submitted : {{ registerForm.submitted }}
+    {{registerForm.value|json}}
+</pre> -->
+<hr />
+<app-users [newUsers]="users" (deleteUser)="deleteUserDetails($event)" (editUser)="editUserDetails($event)">
+</app-users>

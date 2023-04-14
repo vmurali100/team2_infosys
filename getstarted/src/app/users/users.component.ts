@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../sampleform/sampleform.component';
 
 @Component({
@@ -8,11 +8,14 @@ import { User } from '../sampleform/sampleform.component';
 })
 export class UsersComponent implements OnInit {
   constructor() {}
-
-  users: User[] = [];
-  ngOnInit(): void {
-    localStorage.getItem('users')
-      ? (this.users = JSON.parse(localStorage.getItem('users') || '[]'))
-      : (this.users = []);
+  ngOnInit(): void {}
+  @Input() newUsers: User[] = [];
+  @Output() deleteUser = new EventEmitter();
+  @Output() editUser = new EventEmitter();
+  handleDelete(usr: User) {
+    this.deleteUser.emit(usr);
+  }
+  handleEdit(usr: User) {
+    this.editUser.emit(usr);
   }
 }

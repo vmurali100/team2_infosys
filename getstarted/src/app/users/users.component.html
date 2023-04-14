@@ -1,20 +1,19 @@
-<p>users works!</p>
 <table border="1">
     <thead>
         <td>First Name</td>
         <td>Last Name</td>
         <td>Email</td>
         <td>Password</td>
-        <td>Actions</td>
+        <td colspan="2">Actions</td>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of newUsers">
             <td>{{user.fname}}</td>
             <td>{{user.lname}}</td>
             <td>{{user.email}}</td>
             <td>{{user.password}}</td>
-            <td><button>Edit</button></td>
-            <td><button>Delete</button></td>
+            <td><button (click)="handleEdit(user)">Edit</button></td>
+            <td><button (click)="handleDelete(user)">Delete</button></td>
         </tr>
     </tbody>
 </table>

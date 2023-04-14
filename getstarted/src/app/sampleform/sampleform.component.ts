@@ -7,23 +7,67 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SampleformComponent implements OnInit {
   constructor() {}
+  password: string = '';
+  cpassword: string = '';
+  isEdit: boolean = false;
   user: User = {
     fname: '',
     lname: '',
     email: '',
     password: '',
-    cpassword: '',
   };
-  users: User[] = [];
+  users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
   ngOnInit(): void {
-    localStorage.getItem('users')
-      ? (this.users = JSON.parse(localStorage.getItem('users') || '[]'))
-      : (this.users = []);
+    // this.users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
+    // localStorage.getItem('users')
+    //   ? (this.users = JSON.parse(localStorage.getItem('users') || '[]'))
+    //   : (this.users = []);
   }
   addUser() {
-    console.log('Add User:', this.user);
-    this.users.push(this.user);
+    if (this.password === this.cpassword) {
+      this.users.push({ ...this.user, password: this.password });
+      localStorage.setItem('users', JSON.stringify(this.users));
+      this.clearForm();
+    } else {
+      alert('Password in not matching');
+    }
+  }
+
+  deleteUserDetails(usr: User) {
+    this.users = this.users.filter((myUsr) => myUsr.email !== usr.email);
     localStorage.setItem('users', JSON.stringify(this.users));
+  }
+  clearForm() {
+    this.user = {
+      fname: '',
+      lname: '',
+      email: '',
+      password: '',
+    };
+    this.password = '';
+    this.cpassword = '';
+  }
+
+  editUserDetails(usr: User) {
+    this.isEdit = !this.isEdit;
+    this.user = { ...usr };
+    this.password = usr.password;
+    this.cpassword = usr.password;
+  }
+  updateUser() {
+    if (this.password === this.cpassword) {
+      this.users.forEach((usr, i) => {
+        if (usr.email === this.user.email) {
+          this.users[i] = { ...this.user, password: this.password };
+        }
+      });
+      localStorage.setItem('users', JSON.stringify(this.users));
+      this.clearForm();
+      // userForm.reset()
+      this.isEdit = !this.isEdit;
+    } else {
+      alert('Password is not Matching');
+    }
   }
 }
 export interface User {
@@ -31,5 +75,4 @@ export interface User {
   lname: string;
   email: string;
   password: string;
-  cpassword: string;
 }
