@@ -1,26 +1,79 @@
-<p>user works!</p>
-
 <form #userForm="ngForm">
   <!-- ngModel is A directive which adds the Input as a property to the Form -->
   <label for="fname">First Name : </label>
-  <input type="text" name="firstName" [(ngModel)]="myUser.firstName" /> <br />
-  <label for="lname">Last Name : </label>
-  <input type="text" name="lastName" [(ngModel)]="myUser.lastName" /> <br />
-  <label for="email">Email : </label>
   <input
     type="text"
+    name="firstName"
+    [(ngModel)]="myUser.firstName"
+    required
+    minlength="6"
+  />
+  <br />
+  <p
+    *ngIf="
+      userForm.controls['firstName']?.invalid &&
+      (userForm.controls['firstName']?.touched ||
+        userForm.controls['firstName']?.dirty)
+    "
+  >
+    First Name has to be At least 6 Characters
+  </p>
+  <label for="lname">Last Name : </label>
+  <input
+    type="text"
+    name="lastName"
+    [(ngModel)]="myUser.lastName"
+    required
+    minlength="6"
+  />
+  <p
+    *ngIf="
+      userForm.controls['lastName']?.invalid &&
+      (userForm.controls['lastName']?.touched ||
+        userForm.controls['lastName']?.dirty)
+    "
+  >
+    Last Name has to be At least 6 Characters
+  </p>
+  <br />
+  <label for="email">Email : </label>
+  <input
+    type="email"
     name="email"
     [(ngModel)]="myUser.email"
     [disabled]="isEdit"
+    required
+    email
   />
+  <p
+    *ngIf="
+      userForm.controls['email']?.invalid &&
+      (userForm.controls['email']?.touched || userForm.controls['email']?.dirty)
+    "
+  >
+    Enter a Valid Email
+  </p>
   <br />
 
-  <button type="button" *ngIf="!isEdit" (click)="addUser()">Add User</button>
+  <button
+    type="button"
+    *ngIf="!isEdit"
+    (click)="addUser()"
+    [disabled]="!userForm.valid"
+  >
+    Add User
+  </button>
   <button type="button" *ngIf="isEdit" (click)="updateUser()">
     Update User
   </button>
 </form>
-
+<pre>
+    form Touched : {{ userForm.touched }}
+    Form Dirty :{{ userForm.dirty }}
+    Form Pristine : {{ userForm.pristine }}
+  Is the Form is Valid ? :   {{ userForm.valid }}
+  is form Submitted : {{ userForm.submitted }}
+</pre>
 <hr />
 <app-allusers
   [newUsers]="users"
