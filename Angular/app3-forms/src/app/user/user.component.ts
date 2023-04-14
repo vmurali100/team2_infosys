@@ -21,7 +21,9 @@ export class UserComponent {
   };
 
   isEdit: boolean = false;
-
+  ngOnInit() {
+    localStorage.setItem('users', JSON.stringify([]));
+  }
   addUser() {
     this.users.push(this.myUser);
     localStorage.setItem('users', JSON.stringify(this.users));
