@@ -1,5 +1,23 @@
-<h1>Parent Component</h1>
-<app-child (msgEmit)="receivedMsg($event)"></app-child>
-<div *ngIf="msgFromChild.length>0">
-  <h3>Message from child: {{msgFromChild}}</h3>
+<div class="container">
+  <div class="parent-child">
+    <div class="parent">
+      <h1>Parent Component</h1>
+      <div *ngIf="msgFromChild.length>0">
+        <h3>Message from child: {{msgFromChild}}</h3>
+      </div>
+      <input type="text" name="data" id="data" [(ngModel)]="data">
+      <button (click)="sendToChild()">Send to Child</button>
+    </div>
+    <div class="child">
+      <app-child [FromParent]="parentToChild" (msgEmit)="receivedMsg($event)"></app-child>
+    </div>
+  </div>
+  <div class="iso1-iso2">
+    <div class="iso1">
+      <app-iso1></app-iso1>
+    </div>
+    <div class="iso2">
+      <app-iso2></app-iso2>
+    </div>
+  </div>
 </div>

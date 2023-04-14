@@ -1,4 +1,6 @@
-<p>child comp</p>
-
+<h1>child comp</h1>
+<div *ngIf="FromParent.length>0">
+    <h3>Message from Parent: {{FromParent}}</h3>
+</div>
 <input type="text" name="msg" id="msg" [(ngModel)]="msg">
 <button (click)="send()">Send To Parent</button>
