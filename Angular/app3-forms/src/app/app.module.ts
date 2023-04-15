@@ -16,13 +16,11 @@ import { StudentlistComponent } from './studentlist/studentlist.component';
     UserComponent,
     AllusersComponent,
     RegisterComponent,
-    AllregistersComponent
-  ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
+    AllregistersComponent,
     StudentComponent,
-    StudentlistComponent,],
+    StudentlistComponent,
+  ],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,],
   providers: [],
   bootstrap: [AppComponent],
 })
