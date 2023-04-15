@@ -1,0 +1,28 @@
+{
+  "students": [
+    {
+      "fname": "Ram",
+      "lname": "Sam",
+      "email": "ram@gmail.com",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": 1
+    },
+    {
+      "fname": "Murali",
+      "lname": "Krishna",
+      "email": "murali.veesambattu@gmail.com",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": 2
+    },
+    {
+      "fname": "Gura",
+      "lname": "sam",
+      "email": "guru@gmail.com",
+      "password": "11",
+      "confirmPassword": "11",
+      "id": 3
+    }
+  ]
+}
