@@ -1,1 +1,30 @@
-<p>studentlist works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Confirm Pass</th>
+        <th>ID</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of allStudents">
+        <td>{{student.fname}}</td>
+        <td>{{student.lname}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.password}}</td>
+        <td>{{student.confirmPassword}}</td>
+        <td>{{student.id}}</td>
+        <td>
+            <button class="btn btn-warning" (click)="editUser(student)">Edit User</button>
+        </td>
+        <td>
+            <button class="btn btn-danger" (click)="deleteStudent(student)">Delete User</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
