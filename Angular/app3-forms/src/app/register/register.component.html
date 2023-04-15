@@ -1,0 +1,72 @@
+<h3>------------------------<b>Register</b>-------------------------</h3>
+<p>Create your account. It's free an only takes a minute.</p>
+<form #registerForm="ngForm">
+  <label for="fname">First Name : </label>
+  <input type="text" name="firstName" [(ngModel)]="myRegister.firstName" required minlength="6" />
+  <br />
+  <p class="validation" *ngIf="
+      registerForm.controls['firstName']?.invalid &&
+        (registerForm.controls['firstName']?.touched ||
+        registerForm.controls['firstName']?.dirty)
+      ">
+    First Name has to be At least 6 Characters
+  </p>
+  <br>
+  <label for="lname">Last Name : </label>
+  <input type="text" name="lastName" [(ngModel)]="myRegister.lastName" required minlength="3" />
+  <br>
+  <p class="validation" *ngIf="
+      registerForm.controls['lastName']?.invalid &&
+        (registerForm.controls['lastName']?.touched ||
+        registerForm.controls['lastName']?.dirty)
+      ">
+    Last Name has to be At least 3 Characters
+  </p>
+  <br />
+
+  <label for="email">Email : </label>
+  <input type="email" name="email" [(ngModel)]="myRegister.email" [disabled]="isEdit" required email />
+  <br>
+  <p class="validation" *ngIf="
+      registerForm.controls['email']?.invalid &&
+        (registerForm.controls['email']?.touched || registerForm.controls['email']?.dirty)
+      ">
+    Enter a Valid Email
+  </p>
+  <br />
+
+  <label for="password">Password : </label>
+  <input type="password" name="password" [(ngModel)]="myRegister.password" required minlength="8" maxlength="15" />
+  <br>
+  <p class="validation" *ngIf=" registerForm.controls['password']?.invalid &&
+        (registerForm.controls['password']?.touched ||
+        registerForm.controls['password']?.dirty)
+      ">
+    Please Enter a valid password </p>
+  <br />
+
+  <label for="confirmpassword">Confirm Password : </label>
+  <input type="password" name="confirmPassword" [(ngModel)]="myRegister.confirmPassword" required minlength="8"
+    maxlength="15" />
+  <br>
+  <p class="validation" *ngIf="
+      registerForm.controls['confirmPassword']?.invalid &&
+        (registerForm.controls['confirmPassword']?.touched ||
+        registerForm.controls['confirmPassword']?.dirty)
+      ">
+    Please Enter a valid password </p>
+  <br />
+
+  <button type="button" *ngIf="!isEdit" (click)="addUser()" [disabled]="!registerForm.valid">
+    Register Now
+  </button>
+  <button type="button" *ngIf="isEdit" (click)="updateUser()">
+    Update User
+  </button>
+</form>
+<br>
+<hr>
+<hr>
+<app-allregisters [newRegisters]="registers" (editUser)="editUserDetails($event)"
+  (deleteUser)="deleteUserDetails($event)">
+</app-allregisters>

@@ -5,12 +5,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { AllusersComponent } from './allusers/allusers.component';
+import { RegisterComponent } from './register/register.component';
+import { AllregistersComponent } from './allregisters/allregisters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    AllusersComponent
+    AllusersComponent,
+    RegisterComponent,
+    AllregistersComponent
   ],
   imports: [
     BrowserModule,
