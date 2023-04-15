@@ -18,15 +18,12 @@ import { StudentlistComponent } from './studentlist/studentlist.component';
     RegisterComponent,
     AllregistersComponent
   ],
-  imports: [
-    BrowserModule,
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     StudentComponent,
-    StudentlistComponent,
-  ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule,HttpClientModule],
+    StudentlistComponent,],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
