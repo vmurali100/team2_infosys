@@ -1,0 +1,5 @@
+1. Complete the CRUD application for Given API's Including the Validations .
+2. Every application should include Component Communication like follows 
+    1. Create Product  has to be in Parent Component
+    2. Product Table has to be Child Component 
+    

@@ -8,6 +8,7 @@ export interface Student {
   email: string;
   password: string;
   confirmPassword: string;
+  id?: null;
 }
 @Component({
   selector: 'app-student',
@@ -15,7 +16,9 @@ export interface Student {
   styleUrls: ['./student.component.css'],
 })
 export class StudentComponent {
-  constructor(private studentService:StudentService){}
+  students: Student[] = [];
+  isEdit: boolean = false;
+  constructor(private studentService: StudentService) {}
   studentDetails: Student = {
     fname: '',
     lname: '',
@@ -23,10 +26,51 @@ export class StudentComponent {
     password: '',
     confirmPassword: '',
   };
-  registerStudent(studentForm: NgForm) {
-   this.studentService.createStudent(this.studentDetails).subscribe(response=>{
-    console.log("Student Crearted Successfully !!!",response)
-    studentForm.reset()
-   })
+  registerStudent() {
+    try {
+      this.studentService
+        .createStudent(this.studentDetails)
+        .subscribe((response) => {
+          this.getLatestStudents();
+          this.clearForm();
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  getLatestStudents() {
+    this.studentService.getAllStudents().subscribe((response: any) => {
+      this.students = response;
+    });
+  }
+  deleteStudentDetails(student: Student) {
+    this.studentService.deleteStudent(student).subscribe(() => {
+      this.getLatestStudents();
+    });
+  }
+  editStudentDetails(student: Student) {
+    this.studentDetails = { ...student };
+    this.isEdit = !this.isEdit;
+  }
+  udpateStudentDetails() {
+    this.studentService.updateStudent(this.studentDetails).subscribe((res) => {
+      this.getLatestStudents();
+      this.isEdit = !this.isEdit;
+      this.clearForm();
+    });
+  }
+  clearForm() {
+    this.studentDetails = {
+      fname: '',
+      lname: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      id: null,
+    };
+  }
+  ngOnInit() {
+    this.getLatestStudents();
   }
 }
