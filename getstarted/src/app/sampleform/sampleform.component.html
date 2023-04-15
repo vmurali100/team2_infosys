@@ -42,10 +42,6 @@
                                             registerForm.controls['password']?.dirty)">
             Password has to be At least 6 Characters
         </div>
-        <div class="err" *ngIf="registerForm.controls['password']?.valid &&
-                                        password!==cpassword">
-            Password must match
-        </div>
     </div>
     <div class="cpassword">
         <label for="cpassword">Confirm Password</label>
@@ -57,14 +53,14 @@
             Password has to be At least 6 Characters
         </div>
         <div class="err" *ngIf="registerForm.controls['cpassword']?.valid &&
-                                                password!==cpassword">
+                                                (password.length>0 && cpassword.length>0 && password!==cpassword)">
             Password must match
         </div>
     </div>
-    <button type="button" *ngIf="!isEdit" (click)="addUser()" [disabled]="!registerForm.valid">
+    <button type="button" *ngIf="!isEdit" (click)="addUser();registerForm.reset()" [disabled]="!registerForm.valid">
         Add User
     </button>
-    <button type="button" *ngIf="isEdit" (click)="updateUser()" [disabled]="!registerForm.valid">
+    <button type="button" *ngIf="isEdit" (click)="updateUser();registerForm.reset()" [disabled]="!registerForm.valid">
         Edit User
     </button>
 </form>
