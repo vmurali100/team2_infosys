@@ -1,0 +1,83 @@
+<h1>Product Form</h1>
+<!-- 
+    "id": 1,
+    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    "price": 109.95,
+    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "rating": {
+      "rate": 3.9,
+      "count": 120
+    }
+ -->
+<form #productForm="ngForm" class="form-section">
+    <div class="title">
+        <label for="title">Title</label>
+        <input type="text" placeholder="Title" autocomplete="name" name="title" id="title" [(ngModel)]="product.title"
+            required>
+        <div class="err" *ngIf="
+                          productForm.controls['title']?.invalid &&
+                          (productForm.controls['title']?.touched ||
+                            productForm.controls['title']?.dirty) && productForm.controls['title']?.errors?.['required']
+                        ">
+            Title is required
+        </div>
+    </div>
+    <div class="price">
+        <label for="price">Price</label>
+        <input type="number" placeholder="Price" name="price" id="price" [(ngModel)]="product.price" required>
+        <div class="err" *ngIf="
+                          productForm.controls['price']?.invalid &&
+                          (productForm.controls['price']?.touched ||
+                            productForm.controls['price']?.dirty) && productForm.controls['price']?.errors?.['required']
+                        ">
+            Price is required
+        </div>
+    </div>
+    <div class="description">
+        <label for="description">Description</label>
+        <input type="text" placeholder="Description" name="description" id="description"
+            [(ngModel)]="product.description" required>
+        <div class="err" *ngIf="
+                          productForm.controls['description']?.invalid &&
+                          (productForm.controls['description']?.touched ||
+                            productForm.controls['description']?.dirty) && productForm.controls['description']?.errors?.['required']
+                        ">
+            Description is required
+        </div>
+    </div>
+    <div class="category">
+        <label for="category">Category</label>
+        <input type="text" placeholder="category" name="category" id="category" [(ngModel)]="product.category" required>
+        <div class="err" *ngIf="
+                          productForm.controls['category']?.invalid &&
+                          (productForm.controls['category']?.touched ||
+                            productForm.controls['category']?.dirty) && productForm.controls['category']?.errors?.['required']
+                        ">
+            category is required
+        </div>
+    </div>
+    <div class="rating">
+        <label for="rating">Rating</label>
+        <input type="number" placeholder="rating" name="rating" id="rating" [(ngModel)]="product.rating.rate" required>
+        <div class="err" *ngIf="
+                          productForm.controls['rating']?.invalid &&
+                          (productForm.controls['rating']?.touched ||
+                            productForm.controls['rating']?.dirty) && productForm.controls['rating']?.errors?.['required']
+                        ">
+            rating is required
+        </div>
+    </div>
+
+    <button type="button" *ngIf="!isEdit" (click)="addProduct();productForm.reset()" [disabled]="!productForm.valid">
+        Add Product
+    </button>
+    <button type="button" *ngIf="isEdit" (click)="updateProduct();productForm.reset()" [disabled]="!productForm.valid">
+        Edit Product
+    </button>
+</form>
+
+<hr />
+<app-products [productList]="productList" (deleteProduct)="deleteProduct($event)" (editProduct)="editProduct($event)">
+</app-products>
