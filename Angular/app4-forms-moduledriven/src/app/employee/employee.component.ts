@@ -15,9 +15,9 @@ export class EmployeeComponent {
   employees: Employee[] = [];
   constructor(private formBuilder: FormBuilder) {
     this.employeeDetails = this.formBuilder.group({
-      fname: '',
-      lname: '',
-      email: '',
+      fname: [''],
+      lname: [''],
+      email: [''],
     });
   }
   addEmployee() {
