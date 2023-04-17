@@ -49,7 +49,7 @@
     </div>
     <div class="category">
         <label for="category">Category</label>
-        <input type="text" placeholder="category" name="category" id="category" [(ngModel)]="product.category" required>
+        <input type="text" placeholder="Category" name="category" id="category" [(ngModel)]="product.category" required>
         <div class="err" *ngIf="
                           productForm.controls['category']?.invalid &&
                           (productForm.controls['category']?.touched ||

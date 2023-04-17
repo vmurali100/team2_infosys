@@ -1,0 +1,38 @@
+<h1>Task Form</h1>
+<form #taskForm="ngForm">
+  <div class="userId">
+    <label for="userId">User Id : </label>
+    <input type="text" id="userId" name="userId" [(ngModel)]="task.userId" [disabled]="isEdit" required/>
+    <div class="err" *ngIf="
+    taskForm.controls['userId']?.invalid &&
+                          (taskForm.controls['userId']?.touched ||
+                          taskForm.controls['userId']?.dirty) && taskForm.controls['userId']?.errors?.['required']
+                        ">
+            <p style="color: red;">User id cannot be empty</p>
+    </div>
+  </div>
+  <div class="taskName">
+    <label for="taskName">Task : </label>
+    <input type="text" id="taskName" name="taskName" [(ngModel)]="task.title" required minlength="5"/>
+    <div class="err" *ngIf="
+    taskForm.controls['taskName']?.invalid &&
+                          (taskForm.controls['taskName']?.touched ||
+                          taskForm.controls['taskName']?.dirty) && taskForm.controls['taskName']?.errors?.['required']
+                        ">
+            User id cannot be empty
+    </div>
+  </div>
+  <div class="status">
+    <label for="status">Status : </label>
+    <select id="status" name="status" [(ngModel)]="task.completed" required>
+        <option value="">Select an option</option>
+      <option value="true">Complete</option>
+      <option value="false">Incomplete</option>
+    </select>
+  </div>
+
+  <button type="button" (click)="addTask()" *ngIf="!isEdit">Add</button>
+  <button type="button" (click)="updateTask()" *ngIf="isEdit">Update</button>
+</form>
+
+<app-tasks [taskList]="taskList" (editTask)="editTask($event)" (deleteTask)="deleteTask($event)"> </app-tasks>

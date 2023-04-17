@@ -1,0 +1,28 @@
+<!-- { 
+    "userId": 1, 
+    "id": 1, 
+    "title": "delectus aut autem", 
+    "completed": false 
+}, -->
+
+<table>
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>Task Id</th>
+            <th>Task Name</th>
+            <th>Completed</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of taskList">
+            <td>{{task.userId}}</td>
+            <td>{{task.id}}</td>
+            <td>{{task.title}}</td>
+            <td>{{task.completed}}</td>
+            <td><button (click)="handleEdit(task)" class="btn btn-primary">Edit</button></td>
+        <td><button (click)="handleDelete(task)" class="btn btn-primary">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
