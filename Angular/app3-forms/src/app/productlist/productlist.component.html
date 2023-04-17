@@ -1,0 +1,31 @@
+<p>productlist works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Rating</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of allProducts">
+            <td>{{product.id}}</td>
+            <td>{{product.title}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.rating}}</td>
+            <td>
+                <button class="btn btn-warning" (click)="editProduct(product)">Edit Product</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteProduct(product)">Delete Product</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

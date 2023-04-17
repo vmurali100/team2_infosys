@@ -1,0 +1,34 @@
+<p>product works!</p>
+<form #productForm="ngForm">
+    <label for="fname">ID : </label>
+    <input type="text" name="id" [(ngModel)]="productDetails.id" required />
+    <br />
+    <label for="fname">Title : </label>
+    <input type="text" name="title" [(ngModel)]="productDetails.title" required />
+    <br />
+    <label for="fname">Price : </label>
+    <input type="text" name="price" [(ngModel)]="productDetails.price" required />
+    <br />
+    <label for="fname">Description : </label>
+    <input type="text" name="description" [(ngModel)]="productDetails.description" required />
+    <br />
+    <label for="fname">Category : </label>
+    <input type="text" name="category" [(ngModel)]="productDetails.category" required />
+    <br />
+
+    <label for="fname">Rating : </label>
+    <input type="text" name="rating" [(ngModel)]="productDetails.rating" required />
+    <br />
+
+    <button type="button" (click)="createProduct()" [disabled]="!productForm.valid" *ngIf="!isEdit">
+        Add Product
+    </button>
+    <button *ngIf="isEdit" (click)="udpateProductDetails();productForm.reset()">Update Product</button>
+</form>
+
+<hr />
+<app-productlist>
+    [allProducts]="products"
+    (handleDelete)="deleteProductDetails($event)"
+    (handleEdit)="editProductDetails($event)"
+</app-productlist>
