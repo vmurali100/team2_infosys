@@ -1,0 +1,15 @@
+<p>employee works!</p>
+
+<form [formGroup]="employeeDetails">
+  <label for="fname">First Name : </label>
+  <input type="text" formControlName="fname" /> <br />
+  <label for="fname">Last Name : </label>
+  <input type="text" formControlName="lname" /> <br />
+  <label for="fname">Email : </label>
+  <input type="text" formControlName="email" /> <br />
+  <button type="button" (click)="addEmployee()">Add Employee</button>
+</form>
+
+<hr>
+
+<app-employeelist [employeeDetails]="employees"></app-employeelist>
