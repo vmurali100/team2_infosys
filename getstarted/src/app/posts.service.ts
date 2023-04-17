@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Post } from './addpost/addpost.component';
 
 @Injectable({
   providedIn: 'root',
