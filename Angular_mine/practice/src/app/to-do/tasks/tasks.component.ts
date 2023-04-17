@@ -12,6 +12,7 @@ export class TasksComponent {
   @Output() editTask = new EventEmitter();
   @Output() deleteTask = new EventEmitter();
 
+
   handleEdit(task:Task){
     this.editTask.emit(task)
   }

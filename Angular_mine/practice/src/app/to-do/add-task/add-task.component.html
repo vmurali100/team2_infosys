@@ -19,10 +19,10 @@
                           (taskForm.controls['taskName']?.touched ||
                           taskForm.controls['taskName']?.dirty) && taskForm.controls['taskName']?.errors?.['required']
                         ">
-            User id cannot be empty
+                        <p style="color: red;">Task cannot be empty</p>
     </div>
   </div>
-  <div class="status">
+  <div class="status" *ngIf="isEdit">
     <label for="status">Status : </label>
     <select id="status" name="status" [(ngModel)]="task.completed" required>
         <option value="">Select an option</option>
@@ -31,8 +31,9 @@
     </select>
   </div>
 
-  <button type="button" (click)="addTask()" *ngIf="!isEdit">Add</button>
-  <button type="button" (click)="updateTask()" *ngIf="isEdit">Update</button>
+  <button type="button" (click)="addTask();taskForm.reset()" *ngIf="!isEdit">Add</button>
+  <button type="button" (click)="updateTask();taskForm.reset()" *ngIf="isEdit">Update</button>
+  <!-- <button type="button" (click)="getTasks();taskForm.reset()" *ngIf="isEdit">Cancel</button> -->
 </form>
 
 <app-tasks [taskList]="taskList" (editTask)="editTask($event)" (deleteTask)="deleteTask($event)"> </app-tasks>

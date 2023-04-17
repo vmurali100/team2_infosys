@@ -14,7 +14,7 @@ export class AddTaskComponent {
     userId:'',
     id:'',
     title:'',
-    completed:''
+    completed:false
   }
   ngOnInit(): void {
     this.getTasks();
@@ -58,8 +58,8 @@ export class AddTaskComponent {
 }
 
 export interface Task{
-    userId?:'',
-    id?:'',
-    title:'',
-    completed:''
+    userId?:string,
+    id?:any,
+    title:string,
+    completed:boolean;
 }
