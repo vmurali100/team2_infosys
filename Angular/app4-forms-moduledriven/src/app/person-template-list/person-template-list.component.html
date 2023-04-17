@@ -3,7 +3,9 @@
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Eamil </th>
+            <th>Email </th>
+            <th>Area Code</th>
+            <th>Phone Number</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -13,6 +15,8 @@
             <td>{{usr.firstName}}</td>
             <td>{{usr.lastName}}</td>
             <td>{{usr.email}}</td>
+            <td>{{usr.areacode}}</td>
+            <td>{{usr.phonenumber}}</td>
             <td>
                 <button (click)="handleEdit(usr)">Edit User</button>
             </td>

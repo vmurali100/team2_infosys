@@ -35,7 +35,7 @@
     <label for="phone">Phone Number : </label>
     <input type="text" name="phonenumber" [(ngModel)]="myUser.phonenumber" required minlength="10" />
     <br />
-    <button type="button" *ngIf="!isEdit" (click)="addUser();userForm.reset()" [disabled]="!userForm.valid">
+    <button type="button" *ngIf="!isEdit" (click)="addUser();userForm.reset()">
         Add User
     </button>
     <button type="button" *ngIf="isEdit" (click)="updateUser()">
