@@ -7,7 +7,9 @@
             <th>Price</th>
             <th>Description</th>
             <th>Category</th>
-            <th>Rating</th>
+            <th>Image</th>
+            <th>Rate</th>
+            <th>Count</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -19,7 +21,9 @@
             <td>{{product.price}}</td>
             <td>{{product.description}}</td>
             <td>{{product.category}}</td>
-            <td>{{product.rating}}</td>
+            <td>{{product.image}}</td>
+            <td>{{product.rating.rate}}</td>
+            <td>{{product.rating.count}}</td>
             <td>
                 <button class="btn btn-warning" (click)="editProduct(product)">Edit Product</button>
             </td>

@@ -16,8 +16,16 @@
     <input type="text" name="category" [(ngModel)]="productDetails.category" required />
     <br />
 
-    <label for="fname">Rating : </label>
-    <input type="text" name="rating" [(ngModel)]="productDetails.rating" required />
+    <label for="fname">Image : </label>
+    <input type="image" name="image" [(ngModel)]="productDetails.image" required />
+    <br />
+
+    <label for="fname">Rating : </label><br>
+    <label for="fname">Rate : </label>
+    <input type="text" name="rate" [(ngModel)]="productDetails.rating.rate" required />
+    <br />
+    <label for="fname">Count : </label>
+    <input type="text" name="count" [(ngModel)]="productDetails.rating.count" required />
     <br />
 
     <button type="button" (click)="createProduct()" [disabled]="!productForm.valid" *ngIf="!isEdit">

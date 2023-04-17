@@ -6,7 +6,11 @@ export interface Product {
   price: string;
   description: string;
   category: string;
-  rating:string;
+  image:null;
+  rating:{
+    rate:string;
+    count:string;
+  };
 }
 @Component({
   selector: 'app-product',
@@ -23,7 +27,11 @@ export class ProductComponent {
     price: '',
     description: '',
     category: '',
-    rating:'',
+    image:null,
+    rating:{
+      rate: '',
+      count:''
+    },
   };
   createProduct() {
     try {
@@ -67,7 +75,11 @@ export class ProductComponent {
       price: '',
       description: '',
       category: '',
-      rating:'',
+      image:null,
+      rating:{
+        rate:'',
+        count:''
+      },
     };
   }
   ngOnInit() {
