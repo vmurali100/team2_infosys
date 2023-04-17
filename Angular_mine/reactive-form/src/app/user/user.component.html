@@ -1,0 +1,42 @@
+<h1>EVENT REGISTRATION FORM MODULE DRIVEN</h1>
+<form [formGroup]="userDetails">
+    <label for="fname">First Name : </label>
+    <input type="text" formControlName="fname">
+    <br>
+    <label for="lname">Last Name : </label>
+    <input type="text" formControlName="lname">
+    <br>
+    <label for="email">Email : </label>
+    <input type="email" formControlName="email">
+    <br>
+    <label for="areaCode">Area Code : </label>
+    <input type="number" formControlName="areaCode">
+    <br>
+    <label for="phone">Phone Number : </label>
+    <input type="text" formControlName="phone">
+    <br>
+    <div class="event">
+        <label for="event">Event : </label>
+        <select formControlName="event">
+            <option value="">Choose event</option>
+            <option value="Photography">Photography</option>
+            <option value="Dancing">Dancing</option>
+            <option value="Painting">Painting</option>
+        </select>
+    </div>
+    <div class="existingUser">
+        <label for="existingUser">Existing User ? </label>
+       
+            <input id="yes" type="radio" value="Yes" name="existingUser" formControlName="existingUser">
+            <label for="yes">Yes</label>
+         
+       
+            <input id="no" type="radio" value="No" name="existingUser" formControlName="existingUser">
+            <label for="no">No</label>
+       
+    </div>
+    <button type="button" (click)="addUser()">Add User</button>
+    <hr>
+    <app-user-list [userList]="users"></app-user-list>
+</form>
+
