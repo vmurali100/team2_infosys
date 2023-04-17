@@ -5,7 +5,8 @@
   <input type="text" formControlName="lname" /> <br />
   <label for="fname">Email : </label>
   <input type="text" formControlName="email" /> <br />
-  <button type="button" (click)="addEmployee()">Add Employee</button>
+  <button type="button" (click)="addEmployee()" [disabled]="!employeeDetails.valid">Add Employee</button>
 </form>
 <hr>
-<app-employeelist [employeeDetails]="employees"></app-employeelist>
+<p>{{employeeDetails.valid}}</p>
+<!-- <app-employeelist [employeeDetails]="employees"></app-employeelist> -->
