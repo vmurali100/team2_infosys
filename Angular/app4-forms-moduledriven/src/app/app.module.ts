@@ -7,6 +7,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { EmployeelistComponent } from './employeelist/employeelist.component';
 import { PersonComponent } from './person/person.component';
 import { PersonlistComponent } from './personlist/personlist.component';
+import { PersonTemplateComponent } from './person-template/person-template.component';
+import { PersonTemplateListComponent } from './person-template-list/person-template-list.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { PersonlistComponent } from './personlist/personlist.component';
     EmployeeComponent,
     EmployeelistComponent,
     PersonComponent,
-    PersonlistComponent
+    PersonlistComponent,
+    PersonTemplateComponent,
+    PersonTemplateListComponent
   ],
   imports: [
     BrowserModule,
