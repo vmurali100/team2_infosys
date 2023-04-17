@@ -1,0 +1,21 @@
+<table border="1" class="table">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">User Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+            <th scope="col" colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pos of newPosts">
+            <td>{{post.id}}</td>
+            <td>{{post.userId}}</td>
+            <td>{{post.title}}</td>
+            <td>{{post.body}}</td>
+            <td><button (click)="handleEdit(post)" class="btn btn-primary">Edit</button></td>
+            <td><button (click)="handleDelete(post)" class="btn btn-primary">Delete</button></td>
+        </tr>
+    </tbody>
+</table>

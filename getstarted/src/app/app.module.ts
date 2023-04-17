@@ -12,6 +12,9 @@ import { ProductsComponent } from './products/products.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './product.service';
+import { AddpostComponent } from './addpost/addpost.component';
+import { PostsComponent } from './posts/posts.component';
+import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { ProductService } from './product.service';
     UsersComponent,
     ProductsComponent,
     AddproductComponent,
+    AddpostComponent,
+    PostsComponent,
+    ReactiveformComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [ProductService],
