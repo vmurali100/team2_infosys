@@ -1,8 +1,5 @@
 <p>product works!</p>
 <form #productForm="ngForm">
-    <label for="fname">ID : </label>
-    <input type="text" name="id" [(ngModel)]="productDetails.id" required />
-    <br />
     <label for="fname">Title : </label>
     <input type="text" name="title" [(ngModel)]="productDetails.title" required />
     <br />
@@ -35,8 +32,7 @@
 </form>
 
 <hr />
-<app-productlist>
-    [allProducts]="products"
-    (handleDelete)="deleteProductDetails($event)"
-    (handleEdit)="editProductDetails($event)"
+<app-productlist   [allProducts]="products"
+(handleDelete)="deleteProductDetails($event)"
+(handleEdit)="editProductDetails($event)">  
 </app-productlist>

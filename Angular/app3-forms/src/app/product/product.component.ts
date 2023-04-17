@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../products.service';
 export interface Product {
-  id: string;
+  id?: null;
   title: string;
   price: string;
   description: string;
   category: string;
-  image:null;
-  rating:{
-    rate:string;
-    count:string;
+  image: null;
+  rating: {
+    rate: string;
+    count: string;
   };
 }
 @Component({
@@ -20,17 +20,16 @@ export interface Product {
 export class ProductComponent {
   products: Product[] = [];
   isEdit: boolean = false;
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService) { }
   productDetails: Product = {
-    id: '',
     title: '',
     price: '',
     description: '',
     category: '',
-    image:null,
-    rating:{
+    image: null,
+    rating: {
       rate: '',
-      count:''
+      count: ''
     },
   };
   createProduct() {
@@ -48,8 +47,9 @@ export class ProductComponent {
 
   getLatestProducts() {
     this.productService.getAllProducts().subscribe((response: any) => {
-      console.log("response: ",response)
+      console.log("response: ", response)
       this.products = response;
+      console.log("Prod: ",this.products) 
     });
   }
   deleteProductDetails(product: Product) {
@@ -70,15 +70,15 @@ export class ProductComponent {
   }
   clearForm() {
     this.productDetails = {
-      id: '',
+      id: null,
       title: '',
       price: '',
       description: '',
       category: '',
-      image:null,
-      rating:{
-        rate:'',
-        count:''
+      image: null,
+      rating: {
+        rate: '',
+        count: ''
       },
     };
   }

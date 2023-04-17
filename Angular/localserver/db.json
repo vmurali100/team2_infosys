@@ -39,6 +39,14 @@
       "password": "kkk",
       "confirmPassword": "uuueewrw",
       "id": 6
+    },
+    {
+      "fname": "Nisreen",
+      "lname": "Sabir",
+      "email": "nisreensabir@hotmail.com",
+      "password": "dajskdjadk",
+      "confirmPassword": "sdfdjdf",
+      "id": 7
     }
   ],
   "products": [
