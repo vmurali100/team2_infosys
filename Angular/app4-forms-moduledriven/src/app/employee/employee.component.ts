@@ -25,4 +25,7 @@ export class EmployeeComponent {
     this.employees.push({ ...this.employeeDetails.value });
     this.employeeDetails.reset()
   }
+  validateUserField(field:string){
+    return this.employeeDetails.get(field)?.invalid && (this.employeeDetails.get(field)?.dirty || this.employeeDetails.get(field)?.touched )
+  }
 }

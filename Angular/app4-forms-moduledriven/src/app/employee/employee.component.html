@@ -1,6 +1,8 @@
 <form [formGroup]="employeeDetails">
   <label for="fname">First Name : </label>
-  <input type="text" formControlName="fname" /> <br />
+  <input type="text" formControlName="fname" /> 
+  <p style="color:red" *ngIf="validateUserField('fname')">First name should have atleast 6 characters</p>
+  <br />
   <label for="fname">Last Name : </label>
   <input type="text" formControlName="lname" /> <br />
   <label for="fname">Email : </label>
