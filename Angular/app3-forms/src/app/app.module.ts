@@ -11,6 +11,8 @@ import { StudentComponent } from './student/student.component';
 import { StudentlistComponent } from './studentlist/studentlist.component';
 import { ProductComponent } from './product/product.component';
 import { ProductlistComponent } from './productlist/productlist.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostslistComponent } from './postslist/postslist.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ProductlistComponent } from './productlist/productlist.component';
     StudentlistComponent,
     ProductComponent,
     ProductlistComponent,
+    PostsComponent,
+    PostslistComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,],
   providers: [],

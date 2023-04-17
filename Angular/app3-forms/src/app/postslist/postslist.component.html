@@ -1,0 +1,27 @@
+<p>postslist works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User_ID</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of allPosts">
+            <td>{{post.id}}</td>
+            <td>{{post.userId}}</td>
+            <td>{{post.title}}</td>
+            <td>{{post.body}}</td>
+            <td>
+                <button class="btn btn-warning" (click)="editPost(post)">Edit Post</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deletePost(post)">Delete Post</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

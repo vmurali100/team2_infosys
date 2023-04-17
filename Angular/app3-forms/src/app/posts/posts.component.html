@@ -1,0 +1,23 @@
+<p>posts works!</p>
+<form #postForm="ngForm">
+    <label for="fname">UserID : </label>
+    <input type="text" name="userId" [(ngModel)]="postDetails.userId" required />
+    <br />
+    <label for="fname">Title : </label>
+    <input type="text" name="title" [(ngModel)]="postDetails.title" required />
+    <br />
+    <label for="fname">Body : </label>
+    <input type="text" name="body" [(ngModel)]="postDetails.body" required />
+    <br />
+    
+    <button type="button" (click)="createPost()" [disabled]="!postForm.valid" *ngIf="!isEdit">
+        Add Post
+    </button>
+    <button *ngIf="isEdit" (click)="udpatePostDetails();postForm.reset()">Update Product</button>
+</form>
+
+<hr />
+<app-postslist [allPosts]="posts"
+(handleDelete)="deletePostDetails($event)"
+(handleEdit)="editPostDetails($event)">
+</app-postslist>
