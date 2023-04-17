@@ -8,7 +8,7 @@ import { Product } from '../addproduct/addproduct.component';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  @Input() newProducts: Product[] = [];
+  @Input() newProducts: any[] = [];
   @Output() deleteProduct = new EventEmitter();
   @Output() editProduct = new EventEmitter();
   constructor(private ps: ProductService) {}

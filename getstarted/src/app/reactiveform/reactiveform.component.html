@@ -1,4 +1,46 @@
 <h1>Reactive Form</h1>
-<form [FormGroup]="registerForm">
-    <input type="text" name="" id="">
-</form>
+<div class="container-fluid">
+    <form [formGroup]="registerForm" class="form">
+        <label for="fname" class="form-label">First Name : </label>
+        <input type="text" class="form-control" formControlName="fname" />
+        <p style="color: red;" *ngIf="validateUserfield('fname')">
+            <span *ngIf="registerForm.get('fname')?.value?.length===0">
+                First name required
+            </span>
+            <span *ngIf="registerForm.get('fname')?.value?.length>0">
+                First name should have atleast 6 characters
+            </span>
+        </p>
+        <br />
+        <label for="lname" class="form-label">Last Name : </label>
+        <input type="text" class="form-control" formControlName="lname" />
+        <p style="color: red;" *ngIf="validateUserfield('lname')">
+            Last name should have atleast 6 characters
+        </p>
+        <br />
+        <label for="email" class="form-label">Email : </label>
+        <input type="text" class="form-control" formControlName="email" />
+        <p style="color: red;" *ngIf="validateUserfield('email')">
+            Email is not valid
+        </p>
+        <br />
+        <label for="company" class="form-label">Company : </label>
+        <input type="text" class="form-control" formControlName="company" />
+        <p style="color: red;" *ngIf="validateUserfield('company')">
+            Company should have atleast 6 characters
+        </p>
+        <br />
+        <label for="mobile" class="form-label">Mobile No : </label>
+        <input type="text" class="form-control" formControlName="mobile" />
+        <p style="color: red;" *ngIf="validateUserfield('mobile')">
+            Mobile should have 10 digits
+        </p>
+        <br />
+        <button type="button" class="btn btn-primary" (click)="register()"
+            [disabled]="registerForm.invalid">Register</button>
+    </form>
+    <p>
+        {{registerForm.valid}}
+    </p>
+    <app-userlist [userList]="users"></app-userlist>
+</div>

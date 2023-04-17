@@ -15,6 +15,8 @@ import { ProductService } from './product.service';
 import { AddpostComponent } from './addpost/addpost.component';
 import { PostsComponent } from './posts/posts.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { TemplateformComponent } from './templateform/templateform.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ReactiveformComponent } from './reactiveform/reactiveform.component';
     AddpostComponent,
     PostsComponent,
     ReactiveformComponent,
+    UserlistComponent,
+    TemplateformComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [ProductService],

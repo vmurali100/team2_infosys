@@ -52,6 +52,12 @@ export class AddproductComponent implements OnInit {
   getProducts() {
     this.ps.getProducts().subscribe((res: any) => {
       console.log('product', res);
+      // this.productList = res;
+      res.forEach((prod: any) => {
+        console.log('Product', prod);
+        prod['isItemEdit'] = false;
+      });
+      console.log(res);
       this.productList = res;
     });
   }

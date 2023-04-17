@@ -1,0 +1,21 @@
+<h1>Template Driven Form</h1>
+<div class="container-fluid">
+    <form #registerForm="ngForm" class="form">
+        <label for="fname" class="form-label">First Name : </label>
+        <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="userInfo.fname" required /> <br />
+        <label for="lname" class="form-label">Last Name : </label>
+        <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="userInfo.lname" required /> <br />
+        <label for="email" class="form-label">Email : </label>
+        <input type="text" class="form-control" id="email" name="email" [(ngModel)]="userInfo.email" required /> <br />
+        <label for="company" class="form-label">Company : </label>
+        <input type="text" class="form-control" id="company" name="company" [(ngModel)]="userInfo.company" required />
+        <br />
+        <label for="mobile" class="form-label">Mobile No : </label>
+        <input type="number" class="form-control" id="mobile" name="mobile" [(ngModel)]="userInfo.mobile" required />
+        <br />
+        <button type="button" class="btn btn-primary" [disabled]="registerForm.invalid"
+            (click)="register()">Register</button>
+    </form>
+
+    <app-userlist [userList]="users"></app-userlist>
+</div>

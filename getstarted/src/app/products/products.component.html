@@ -40,7 +40,13 @@
             <td>
                 {{product.rating.count}}
             </td>
-            <td><button (click)="handleEdit(product)" class="btn btn-primary">Edit</button></td>
+            <td>
+                <button *ngIf="!product.isItemEdit" (click)="product.isItemEdit=true"
+                    class="btn btn-primary">Edit</button>
+                <button *ngIf="product.isItemEdit" (click)="product.isItemEdit=false"
+                    class="btn btn-primary">Update</button>
+
+            </td>
             <td><button (click)="handleDelete(product)" class="btn btn-primary">Delete</button></td>
         </tr>
     </tbody>

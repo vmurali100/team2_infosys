@@ -8,7 +8,7 @@
 <form #postForm="ngForm" class="form-section">
     <div class="title">
         <label for="userid">UserId</label>
-        <input type="number" placeholder="User id" name="userid" id="userid" [(ngModel)]="post.userid" required>
+        <input type="number" placeholder="User id" name="userid" id="userid" [(ngModel)]="post.userId" required>
         <div class="err" *ngIf="
                           postForm.controls['userid']?.invalid &&
                           (postForm.controls['userid']?.touched ||
@@ -39,11 +39,11 @@
             Body is required
         </div>
     </div>
-    <button type="button" *ngIf="!isEdit" (click)="addProduct();postForm.reset()" [disabled]="!postForm.valid">
-        Add Product
+    <button type="button" *ngIf="!isEdit" (click)="addPost();postForm.reset()" [disabled]="!postForm.valid">
+        Add Post
     </button>
-    <button type="button" *ngIf="isEdit" (click)="updateProduct();postForm.reset()" [disabled]="!postForm.valid">
-        Edit Product
+    <button type="button" *ngIf="isEdit" (click)="updatePost();postForm.reset()" [disabled]="!postForm.valid">
+        Edit Post
     </button>
 </form>
 
