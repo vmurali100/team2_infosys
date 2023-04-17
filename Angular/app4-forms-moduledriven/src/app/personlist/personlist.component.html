@@ -1,0 +1,26 @@
+<p>personlist works!</p>
+<table border="1">
+    <thead>
+        <th>First Name </th>
+        <th>Last Name</th>
+        <th>Email </th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let person of personDetails">
+            <td>{{person.fname}}</td>
+            <td>{{person.lname}}</td>
+            <td>{{person.email}}</td>
+            <td>{{person.areacode}}</td>
+            <td>{{person.phonenumber}}</td>
+
+            <td>
+                <button>Edit</button>
+            </td>
+            <td>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

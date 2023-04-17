@@ -1,0 +1,17 @@
+<p>person works!</p>
+<form [formGroup]="personDetails">
+    <label for="fname">First Name : </label>
+    <input type="text" formControlName="fname" /> <br />
+    <label for="fname">Last Name : </label>
+    <input type="text" formControlName="lname" /> <br />
+    <label for="fname">Email : </label>
+    <input type="text" formControlName="email" /> <br />
+    <label for="fname">Area Code : </label>
+    <input type="text" formControlName="areacode" /> <br />
+    <label for="fname">Phone Number : </label>
+    <input type="text" formControlName="phonenumber" /> <br />
+    <button type="button" (click)="addPerson()">Add Person</button>
+  </form>
+  
+  <hr>
+  <app-personlist [personDetails]="persons"></app-personlist>
