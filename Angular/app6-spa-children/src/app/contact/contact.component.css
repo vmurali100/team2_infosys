@@ -1,0 +1,7 @@
+ul#myContacts li {
+    display: inline-block;
+    margin: 0 20px;
+    background: lightgray;
+    padding: 10px;
+    cursor: pointer;
+}
