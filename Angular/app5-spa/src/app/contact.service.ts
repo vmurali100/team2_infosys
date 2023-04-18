@@ -25,6 +25,8 @@ export class ContactService {
   }
   updateContact(contact:any) {
     return this._http.put("http://localhost:3000/contacts/"+contact.id,contact)
-
+  }
+  getSingleContact(contact:any){
+    return this._http.get("http://localhost:3000/contacts/"+contact.id)
   }
 }
