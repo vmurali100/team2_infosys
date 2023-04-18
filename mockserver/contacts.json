@@ -1,0 +1,18 @@
+{
+  "contacts": [
+    {
+      "fname": "asda",
+      "lname": "asdasd",
+      "email": "asdasd@asd.asd",
+      "password": "asdasd",
+      "id": 1
+    },
+    {
+      "fname": "asd",
+      "lname": "adsasd",
+      "email": "adssd@asd.asd",
+      "password": "asdasd",
+      "id": 2
+    }
+  ]
+}

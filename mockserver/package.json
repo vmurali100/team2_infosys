@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "json-server --watch db.json",
+    "contacts": "json-server --watch contacts.json",
     "posts": "json-server --watch posts.json -p 9000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
