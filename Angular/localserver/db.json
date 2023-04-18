@@ -302,23 +302,9 @@
     {
       "fname": "Ram",
       "lname": "Ravi",
-      "email": "Sam",
+      "email": "Sam@gmail.com",
       "password": "raaa",
       "id": 2
-    },
-    {
-      "fname": "Kam",
-      "lname": "Sam",
-      "email": "eam@gmail.com",
-      "password": "wsss",
-      "id": 3
-    },
-    {
-      "fname": "Raghu",
-      "lname": "Bagu",
-      "email": "ragu@gmail.com",
-      "password": "abbcd",
-      "id": 4
     }
   ]
 }

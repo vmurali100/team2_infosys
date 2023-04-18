@@ -9,13 +9,15 @@ import { Contact, ContactService } from '../contact.service';
 })
 export class ContactComponent {
   contactDetils: FormGroup;
-  contacts:Contact[] = []
+  contacts:Contact[] = [];
+  isEdit:boolean = false;
   constructor(private fromBuilder: FormBuilder,private cs:ContactService) {
     this.contactDetils = this.fromBuilder.group({
       fname: new FormControl('', []),
       lname: new FormControl('', []),
       email: new FormControl('', []),
       password: new FormControl('', []),
+      id:new FormControl(null,[])
     });
   }
 
@@ -34,9 +36,30 @@ export class ContactComponent {
   clearForm(){
     this.contactDetils.reset()
   }
+getAllUsers(){
+  this.cs.getAllContacts().subscribe((response:any)=>{
+    this.contacts = response
+  })
+}
+  deleteUserInfo(contact:any){
+    this.cs.deleteContact(contact).subscribe(()=>{
+      this.getAllUsers()
+    })
+  }
+
+  editContact(contact:any){
+    this.contactDetils.setValue(contact)
+    this.isEdit = !this.isEdit
+  }
   ngOnInit(){
-    this.cs.getAllContacts().subscribe((response:any)=>{
-      this.contacts = response
+    this.getAllUsers()
+  }
+  updateContact(){
+    this.cs.updateContact(this.contactDetils.value).subscribe(response=>{
+      this.getAllUsers();
+      this.clearForm();
+      this.isEdit = !this.isEdit
+
     })
   }
 }

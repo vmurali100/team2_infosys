@@ -5,7 +5,8 @@ export interface Contact{
   fname:string;
   lname:string;
   email:string;
-  password:string
+  password:string;
+  id?:number
 }
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,11 @@ export class ContactService {
   getAllContacts() {
     return this._http.get("http://localhost:3000/contacts")
   }
-  deleteContact() {}
-  updateContact() {}
+  deleteContact(contact:any) {
+    return this._http.delete("http://localhost:3000/contacts/"+contact.id)
+  }
+  updateContact(contact:any) {
+    return this._http.put("http://localhost:3000/contacts/"+contact.id,contact)
+
+  }
 }

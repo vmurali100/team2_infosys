@@ -16,10 +16,10 @@
             <td>{{contact.email}}</td>
             <td>{{contact.password}}</td>
             <td>
-                <button class="btn btn-warning">Edit Contact</button>
+                <button class="btn btn-warning" (click)="editContact(contact)">Edit Contact</button>
             </td>
             <td>
-                <button class="btn btn-danger">Delete Contact</button>
+                <button class="btn btn-danger" (click)="deleteContact(contact)">Delete Contact</button>
             </td>
         </tr>
     </tbody>
