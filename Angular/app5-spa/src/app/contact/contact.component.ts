@@ -17,49 +17,46 @@ export class ContactComponent {
       lname: new FormControl('', []),
       email: new FormControl('', []),
       password: new FormControl('', []),
-      id: new FormControl(null, [])
+      id: new FormControl(null, []),
     });
   }
 
   addContact() {
-    console.log('addContact called !!', this.contactDetils.value);
     this.cs.createContact(this.contactDetils.value).subscribe((res) => {
-      console.log(res)
+      console.log(res);
       this.cs.getAllContacts().subscribe((response: any) => {
-        this.contacts = response
-        this.clearForm()
-
-      })
-    })
+        this.contacts = response;
+        this.clearForm();
+      });
+    });
   }
 
   clearForm() {
-    this.contactDetils.reset()
+    this.contactDetils.reset();
   }
   getAllUsers() {
     this.cs.getAllContacts().subscribe((response: any) => {
-      this.contacts = response
-    })
+      this.contacts = response;
+    });
   }
   deleteUserInfo(contact: any) {
     this.cs.deleteContact(contact).subscribe(() => {
-      this.getAllUsers()
-    })
+      this.getAllUsers();
+    });
   }
 
   editContact(contact: any) {
-    this.contactDetils.setValue(contact)
-    this.isEdit = !this.isEdit
+    this.contactDetils.setValue(contact);
+    this.isEdit = !this.isEdit;
   }
   ngOnInit() {
-    this.getAllUsers()
+    this.getAllUsers();
   }
   updateContact() {
-    this.cs.updateContact(this.contactDetils.value).subscribe(response => {
+    this.cs.updateContact(this.contactDetils.value).subscribe((response) => {
       this.getAllUsers();
       this.clearForm();
-      this.isEdit = !this.isEdit
-
-    })
+      this.isEdit = !this.isEdit;
+    });
   }
 }

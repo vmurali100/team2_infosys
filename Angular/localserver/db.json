@@ -900,6 +900,27 @@
       "email": "sdfhsd@fhdsd",
       "password": "ewffsfsd3322",
       "id": 1
+    },
+    {
+      "fname": "Ram",
+      "lname": "Ravi",
+      "email": "Sam@gmail.com",
+      "password": "raaa",
+      "id": 2
+    },
+    {
+      "fname": "Sam",
+      "lname": "sasi",
+      "email": "sam@gmail.com",
+      "password": "11122",
+      "id": 3
+    },
+    {
+      "fname": "Kiran",
+      "lname": "Kumar",
+      "email": "kiran@gmail.com",
+      "password": "Sam",
+      "id": 4
     }
   ]
 }

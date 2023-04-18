@@ -9,6 +9,9 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditComponent } from './edit/edit.component';
+import { ContactlistComponent } from './contactlist/contactlist.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContactComponent,
     ContactDetailsComponent,
     NavbarComponent,
+    EditComponent,
+    ContactlistComponent,
+    ContactFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,HttpClientModule],
   providers: [],
