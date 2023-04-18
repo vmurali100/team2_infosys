@@ -290,7 +290,8 @@
         "count": 145
       }
     }
-  ], "posts":[
+  ],
+  "posts": [
     {
       "userId": 1,
       "id": 1,
@@ -890,6 +891,22 @@
       "id": 100,
       "title": "at nam consequatur ea labore ea harum",
       "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
+    }
+  ],
+  "contacts": [
+    {
+      "fname": "Murali",
+      "lname": "Krishna",
+      "email": "murali@gmail.com",
+      "password": "112233",
+      "id": 1
+    },
+    {
+      "fname": "Ram",
+      "lname": "Ravi",
+      "email": "Sam@gmail.com",
+      "password": "raaa",
+      "id": 2
     }
   ]
 }
