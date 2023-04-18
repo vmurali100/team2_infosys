@@ -17,20 +17,11 @@
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          formControlName="password"
-        />
+        <input type="password" class="form-control" formControlName="password" />
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          formControlName="id"
-          hidden
-        />
+        <input type="password" class="form-control" formControlName="id" hidden />
       </div>
       <button type="button" *ngIf="!isEdit" class="btn btn-primary" (click)="addContact()">
         Submit
@@ -41,10 +32,7 @@
     </form>
   </div>
   <div class="col-8">
-    <app-contact-details
-      [allContacts]="contacts"
-      (handleDelete)="deleteUserInfo($event)"
-      (handleEdit)="editContact($event)"
-    ></app-contact-details>
+    <app-contact-details [allContacts]="contacts" (handleDelete)="deleteUserInfo($event)"
+      (handleEdit)="editContact($event)"></app-contact-details>
   </div>
 </div>
