@@ -12,7 +12,6 @@ export class AppComponent {
   count$: Observable<number>;
   constructor(private store: Store<{ count: number }>) {
     this.count$ = store.select('count');
-    console.log(store);
   }
   increment() {
     this.store.dispatch(increment());
