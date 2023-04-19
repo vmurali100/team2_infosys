@@ -1,0 +1,13 @@
+
+<button (click)="increment()">Increment</button>
+
+<br><br><br>
+<div>Current Count: {{ count$ | async }}</div>
+
+<button>Increment </button>
+
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
+<router-outlet></router-outlet>
