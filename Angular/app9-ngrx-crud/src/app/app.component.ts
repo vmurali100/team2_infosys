@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { map, of } from 'rxjs';
 import { UserApiActions } from './user.actions';
 import { User } from './user.model';
 import { selectUsers } from './users.selector';
@@ -33,7 +34,7 @@ export class AppComponent {
   }
   deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe(() => {
-      this.getAllUsers();
+      this.store.dispatch(UserApiActions.updteUsersList({user}))
     });
   }
   addUser() {
@@ -51,7 +52,7 @@ export class AppComponent {
   }
   editUser(user: User) {
     this.userDetails = { ...user };
-    this.isEdit = true
+    this.isEdit = true;
   }
   updateUser() {
     this.userService.updateUser(this.userDetails).subscribe((res) => {
