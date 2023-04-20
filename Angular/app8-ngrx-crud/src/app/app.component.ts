@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
-import { User } from 'src/user.actions';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { AppState } from './user.reducer';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'app8-ngrx-crud';
-  users$ = Observable<any>
-  constructor(private store:Store){
-    console.log(store)
-    // this.users$ = store.select('users')
-  }
+  users$ = this.store.pipe(select(state => state.users));
+  constructor(private store: Store<AppState>) {}
+
+
 }
