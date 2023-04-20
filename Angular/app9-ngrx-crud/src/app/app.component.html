@@ -1,0 +1,14 @@
+<form #userForm="ngForm">
+  <label for="fname">First Name : </label>
+  <input type="text" name="lname" [(ngModel)]="userDetails.fname"> <br>
+  <label for="lname">Last Name : </label>
+  <input type="text" name="fname" [(ngModel)]="userDetails.lname"> <br>  
+  <button type="button" (click)="addUser()" *ngIf="!isEdit">Add User</button>
+  <button type="button" (click)="updateUser()" *ngIf="isEdit">Update User</button>
+</form>
+<hr>
+<div *ngFor = "let user of users$ | async">
+  <p>{{user.fname}} - <button (click)="deleteUser(user)">Delete User</button> 
+    <button (click)="editUser(user)">Edit User</button></p> 
+</div>
+

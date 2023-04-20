@@ -320,5 +320,32 @@
       "password": "Sam",
       "id": 4
     }
-  ]
+  ],
+  "users": [
+    {
+        "fname": "Rosalind",
+        "lname": "Conn",
+        "id": 67
+    },
+    {
+        "fname": "Aubre",
+        "lname": "Hunt",
+        "id": 68
+    },
+    {
+        "fname": "Arti",
+        "lname": "Wiedenmann",
+        "id": 69
+    },
+    {
+        "fname": "Cory",
+        "lname": "Bergin",
+        "id": 70
+    },
+    {
+        "fname": "Jasmine",
+        "lname": "Volz",
+        "id": 71
+    }
+]
 }
