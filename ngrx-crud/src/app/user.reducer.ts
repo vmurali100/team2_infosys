@@ -1,13 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
-import { addUser, updateUser, deleteUser, User } from './user.actions';
+import { UserApiActions } from './user.actions';
 
-export const initialState: { user: User[] } = {
-  user: [],
-};
+export const initialState: any = []; // Complete Business Logic . This is the place Whete Store is getting Changed
 
-export const userReducer = createReducer(
+export const usersReducer = createReducer(
   initialState,
-  on(addUser, (state) => state),
-  on(updateUser, (state) => state),
-  on(deleteUser, (state) => state)
+  on(UserApiActions.retrieveUsersList, (_state, { users }) => {
+    return users;
+  })
 );
+
+// the Above On Method will have 2 arguments
+// First One is Action , Second one is Call back Function

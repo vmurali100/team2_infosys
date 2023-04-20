@@ -1,5 +1,30 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": 1,
+      "fname": "Nicole",
+      "lname": "Watson",
+      "email": "nicole_watson@aol.com"
+    },
+    {
+      "id": 2,
+      "fname": "Mark",
+      "lname": "Ross",
+      "email": "m_ross1@yahoo.com"
+    },
+    {
+      "id": 3,
+      "fname": "William",
+      "lname": "Sanchez",
+      "email": "wsanchez@yahoo.com"
+    },
+    {
+      "id": 4,
+      "fname": "Richard",
+      "lname": "Walker",
+      "email": "richard_joseph_walker4@gmail.com"
+    }
+  ],
   "products": [
     {
       "id": 1,
