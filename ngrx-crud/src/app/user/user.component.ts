@@ -31,7 +31,8 @@ export class UserComponent implements OnInit {
   }
   deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe(() => {
-      this.getAllUsers();
+      // this.getAllUsers();
+      this.store.dispatch(UserApiActions.updteUsersList({ user }));
     });
   }
   addUser() {
