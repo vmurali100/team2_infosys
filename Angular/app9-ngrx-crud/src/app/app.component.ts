@@ -33,13 +33,14 @@ export class AppComponent {
   }
   deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe(() => {
-      this.getAllUsers();
+      this.store.dispatch(UserApiActions.deleteUsersList({ user }));
     });
   }
   addUser() {
+    let user = this.userDetails;
     this.userService.addUser(this.userDetails).subscribe(() => {
-      this.getAllUsers();
       this.clearForm();
+      this.store.dispatch(UserApiActions.addUsersList({ user }));
     });
   }
   clearForm() {
@@ -51,11 +52,12 @@ export class AppComponent {
   }
   editUser(user: User) {
     this.userDetails = { ...user };
-    this.isEdit = true
+    this.isEdit = true;
   }
   updateUser() {
+    let user = this.userDetails
     this.userService.updateUser(this.userDetails).subscribe((res) => {
-      this.getAllUsers();
+      this.store.dispatch(UserApiActions.updateUsersList({user}))
       this.isEdit = false;
       this.clearForm();
     });
