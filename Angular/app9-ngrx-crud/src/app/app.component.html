@@ -1,4 +1,4 @@
-<form #userForm="ngForm">
+<!-- <form #userForm="ngForm">
   <label for="fname">First Name : </label>
   <input type="text" name="lname" [(ngModel)]="userDetails.fname"> <br>
   <label for="lname">Last Name : </label>
@@ -10,5 +10,37 @@
 <div *ngFor = "let user of users$ | async">
   <p>{{user.fname}} - <button (click)="deleteUser(user)">Delete User</button> 
     <button (click)="editUser(user)">Edit User</button></p> 
-</div>
+</div> -->
 
+<table class="table table-striped container">
+  <thead>
+    <tr>
+      <th>Price</th>
+      <th>First</th>
+      <th>Last</th>
+      <th>Date</th>
+      <th>Dec Values</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr *ngFor = "let user of users$ | async ">
+    <td>{{user.id }}</td>
+    <td>{{user.fname  }}</td>
+
+    <!-- <td>{{user.fname | json }}</td> -->
+    <td>{{user.lname | lowercase | slice:0:2}}</td>
+    <!-- <td>{{user.date | date: 'shortTime'}}</td> -->
+    <!-- <td>{{user.date | date: 'fullDate'}}</td> -->
+    <td>{{user.date | date: 'dd/MM/yyyy'}}</td>
+    <td>{{user.dec | number: '1.4-4'}}</td>
+    <td>
+      <button class="btn btn-warning" (click)="editUser(user)">Edit User</button>
+    </td>
+    <td>
+      <button class="btn btn-danger" (click)="deleteUser(user)">Delete User</button>
+    </td>
+   </tr>
+  </tbody>
+</table>
