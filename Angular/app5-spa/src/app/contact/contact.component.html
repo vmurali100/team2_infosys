@@ -1,0 +1,21 @@
+<h2>ADD CONTACT</h2>
+
+<div class="row">
+  <div class="col-4">
+    <app-contact-form
+      [formName]="contactDetils"
+      [isEdit]="isEdit"
+      (handleadd)="addContact()"
+      (handleUpdate)="updateContact()"
+    ></app-contact-form>
+  </div>
+  <div class="col-8">
+    <app-contact-details
+      [allContacts]="contacts"
+      (handleDelete)="deleteUserInfo($event)"
+      (handleEdit)="editContact($event)"
+    ></app-contact-details>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

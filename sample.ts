@@ -61,3 +61,17 @@ var calculate = (num1: number, num2: number, num3?: number) => {
 
 var total: number = calculate(12, 10);
 console.log(total);
+
+
+
+const store = {
+  products:[],
+  students:[],
+  employees:[],
+  cart:[]
+}
+
+// components 
+1. Products Component 
+2. Carts Component 
+3. employees Component 
