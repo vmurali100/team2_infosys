@@ -8,8 +8,6 @@ import { AppState } from './user.reducer';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  users$ = this.store.pipe(select(state => state.users));
   constructor(private store: Store<AppState>) {}
-
 
 }
