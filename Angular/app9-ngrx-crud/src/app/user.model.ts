@@ -1,5 +1,7 @@
 export interface User {
     fname:string;
     lname:string;
-    id:any
+    date:string;
+    id:any,
+    dec:string
 }

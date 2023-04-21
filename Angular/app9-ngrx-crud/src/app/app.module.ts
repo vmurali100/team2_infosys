@@ -6,9 +6,13 @@ import { StoreModule } from '@ngrx/store';
 import { usersReducer } from './user.reducer'; // Step 2 : 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsrPipe } from './usr.pipe';
+import { UserdateDirective } from './userdate.directive';
+import { ChipsComponent } from './chips/chips.component';
+import { SwapDirective } from './swap.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UsrPipe, UserdateDirective, ChipsComponent, SwapDirective],
   imports: [
     BrowserModule,
     HttpClientModule,

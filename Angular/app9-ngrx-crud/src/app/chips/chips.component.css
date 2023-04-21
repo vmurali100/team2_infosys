@@ -1,0 +1,13 @@
+li {
+    list-style: none;
+    display: inline-block;
+    margin: 10px;
+    background: red;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.isClicked{
+    background: green !important;
+}
