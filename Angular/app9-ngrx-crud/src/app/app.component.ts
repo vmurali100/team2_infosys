@@ -17,6 +17,8 @@ export class AppComponent {
     fname: '',
     lname: '',
     id: null,
+    date:'',
+    dec:''
   };
 
   constructor(private store: Store, private userService: UserService) {}
@@ -48,6 +50,8 @@ export class AppComponent {
       fname: '',
       lname: '',
       id: null,
+      date:'',
+      dec:''
     };
   }
   editUser(user: User) {
