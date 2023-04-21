@@ -9,3 +9,6 @@
 <div *ngFor="let image of myImages">
     <img [src]="image.url" alt="" width="400px">
 </div>
+
+<button (click)="changeMsg()">Change Child Message</button>
+<app-student></app-student>
