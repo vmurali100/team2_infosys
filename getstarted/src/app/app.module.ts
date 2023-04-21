@@ -17,6 +17,8 @@ import { PostsComponent } from './posts/posts.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { TemplateformComponent } from './templateform/templateform.component';
+import { FindTextDirective } from './find-text.directive';
+import { SampleDirectiveComponent } from './sample-directive/sample-directive.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { TemplateformComponent } from './templateform/templateform.component';
     ReactiveformComponent,
     UserlistComponent,
     TemplateformComponent,
+    FindTextDirective,
+    SampleDirectiveComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [ProductService],
