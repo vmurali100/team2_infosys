@@ -1,11 +1,11 @@
-import { Component, Input, SimpleChange } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css'],
 })
-export class StudentComponent {
+export class StudentComponent implements OnInit {
   @Input() msg = '';
   ngOnChanges(changes:any){
     console.log(changes)
@@ -20,4 +20,7 @@ export class StudentComponent {
     console.log("ngOnDestroy called Just Now !!!!")
   }
 
+  ngOnInit(): void {
+    
+  }
 }

@@ -1,0 +1,11 @@
+<form #imageForm="ngForm">
+  <input type="text" name="imageName" ngModel>
+  <br>
+  <button (click)="getAnImage(imageForm)">Get Image</button>
+
+</form>
+<img src="./../assets/Loading_2.gif" alt="" *ngIf="isLoading">
+
+<div *ngFor="let image of myImages">
+    <img [src]="image.url" alt="" width="400px">
+</div>
